@@ -11,7 +11,7 @@
 		<RootNamespace>FSLib.App.SimpleUpdater</RootNamespace>
 		<AssemblyName>SimpleUpdater</AssemblyName>
 		<SignAssembly>true</SignAssembly>
-		<TargetFrameworks>net20;net40;net45;net5.0-windows</TargetFrameworks>
+		<TargetFramework>net45</TargetFramework>
 		<EnableDefaultCompileItems>false</EnableDefaultCompileItems>
 		<EnableDefaultEmbeddedResourceItems>false</EnableDefaultEmbeddedResourceItems>
 		<UseWindowsForms>true</UseWindowsForms>
@@ -344,7 +344,7 @@
 	<PropertyGroup>
 		<SignAssembly>true</SignAssembly>
 		<AssemblyOriginatorKeyFile>ifish.snk</AssemblyOriginatorKeyFile>
-		<AutoGenerateBindingRedirects>True</AutoGenerateBindingRedirects>
+		<AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
 		<PackageId>fishlee.net.simpleupdater</PackageId>
 		<Version>5.0.0.0</Version>
 		<Authors>iFish(木鱼)</Authors>
@@ -362,6 +362,9 @@ Please visit https://www.fishlee.net/soft/simple_autoupdater/ to get update pack
 		<PackageTags>autoupdate updater automatic</PackageTags>
 		<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
 		<Company>鱼的后花园</Company>
+	</PropertyGroup>
+	<PropertyGroup Condition="'$(Configuration)|$(TargetFramework)|$(Platform)'=='Debug|net20|AnyCPU'">
+	  <DefineConstants>TRACE</DefineConstants>
 	</PropertyGroup>
 	<!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
 			 Other similar extension points exist, see Microsoft.Common.targets.

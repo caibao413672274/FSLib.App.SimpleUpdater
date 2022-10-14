@@ -20,23 +20,30 @@ namespace UpdateTestHost
 			Application.EnableVisualStyles();
 			Application.SetCompatibleTextRenderingDefault(false);
 
-			var updater = Updater.CreateUpdaterInstance("https://www.fishlee.net/service/update2/69/78/update_c.xml");
-			var context = updater.Context;
-			context.LogFile = Path.GetFullPath(@".\log.txt");
-			//var updater = Updater.CreateUpdaterInstance("https://www.fishlee.net/service/update2/56/40/{0}", "update_c.xml");
 
-			updater.Error += (sender, args) =>
-			{
-				MessageBox.Show(updater.Context.Exception.Message);
-			};
-			updater.MinmumVersionRequired += (sender, args) =>
-			{
-				MessageBox.Show(updater.Context.Exception?.Message);
-			};
+            //http://localhost:8091/update.xml
 
-			updater.BeginCheckUpdateInProcess();
+            //var updater = FSLib.App.SimpleUpdater.Updater.CheckUpdateSimple("http://localhost:8091/update.xml");
+            var updater = Updater.CreateUpdaterInstance("http://localhost:8091/{0}","update.xml");
+            var context = updater.Context;
+           // context.HiddenUI = true;
+            //   context.ForceUpdate = true;
 
-			Application.Run(new Form());
+            context.LogFile = Path.GetFullPath(@".\log.txt");
+            //var updater = Updater.CreateUpdaterInstance("https://www.fishlee.net/service/update2/56/40/{0}", "update_c.xml");
+
+            updater.Error += (sender, args) =>
+            {
+                MessageBox.Show(updater.Context.Exception.Message);
+            };
+            updater.MinmumVersionRequired += (sender, args) =>
+            {
+                MessageBox.Show(updater.Context.Exception?.Message);
+            };
+
+            updater.BeginCheckUpdateInProcess();
+
+            Application.Run(new Form());
 		}
 	}
 }

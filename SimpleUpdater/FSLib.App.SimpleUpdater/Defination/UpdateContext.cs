@@ -72,7 +72,7 @@ namespace FSLib.App.SimpleUpdater.Defination
 			}
 			else
 			{
-				UpdateTempRoot = System.IO.Path.Combine(temppath, Guid.NewGuid().ToString("N").Substring(0, 8));
+				UpdateTempRoot =  System.IO.Path.Combine(temppath, Guid.NewGuid().ToString("N").Substring(0, 8));
 				IsInUpdateMode = false;
 
 				//尝试自动加载升级属性
